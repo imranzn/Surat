@@ -33,15 +33,16 @@ header {visibility:hidden;}
     100% {background-position:0% 50%;}
 }
 
-/* Title */
+/* Title Responsive */
 .title{
     text-align:center;
-    font-size:55px;
+    font-size: clamp(28px, 6vw, 55px);
     font-weight:800;
     color:white;
     margin-top:30px;
     text-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    white-space: nowrap;
+    line-height:1.2;
+    padding:0 10px;
 }
 
 /* Envelope */
@@ -69,6 +70,30 @@ header {visibility:hidden;}
     0%{transform:translateY(0);}
     50%{transform:translateY(-10px);}
     100%{transform:translateY(0);}
+}
+
+/* Responsive HP */
+@media (max-width: 768px){
+
+    .envelope{
+        width:250px;
+        height:170px;
+        font-size:70px;
+    }
+
+    .letter{
+        padding:25px !important;
+        margin:20px 10px !important;
+    }
+
+    .nama{
+        font-size:28px !important;
+    }
+
+    .isi{
+        font-size:16px !important;
+        line-height:1.8 !important;
+    }
 }
 
 /* Button */
@@ -148,7 +173,11 @@ st.write("")
 
 # ================= ENVELOPE =================
 if not st.session_state.open:
-    st.markdown("<div class='envelope'>💌</div>", unsafe_allow_html=True)
+
+    st.markdown(
+        "<div class='envelope'>💌</div>",
+        unsafe_allow_html=True
+    )
 
     if st.button("Buka Surat ✨"):
         st.session_state.open = True
