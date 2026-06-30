@@ -1,209 +1,71 @@
 import streamlit as st
 import time
 
-st.set_page_config(
-    page_title="Surat Untukmu 💌",
-    page_icon="💌",
-    layout="centered"
-)
+st.set_page_config(page_title="Happy Birthday Mom", page_icon="🎂", layout="centered")
 
-# ================= STATE =================
 if "open" not in st.session_state:
-    st.session_state.open = False
+    st.session_state.open=False
 
-# ================= CSS =================
 st.markdown("""
 <style>
-
-/* Hide Streamlit default */
-#MainMenu {visibility:hidden;}
-footer {visibility:hidden;}
-header {visibility:hidden;}
-
-/* Background dreamy */
+#MainMenu,header,footer{visibility:hidden;}
 .stApp{
-    background: radial-gradient(circle at top, #ff9a9e, #fad0c4, #a18cd1, #fbc2eb);
-    background-size: 400% 400%;
-    animation: bgMove 10s ease infinite;
+background:linear-gradient(135deg,#ffb6c1,#ffd6e7,#cdb4db);
 }
-
-@keyframes bgMove {
-    0% {background-position:0% 50%;}
-    50% {background-position:100% 50%;}
-    100% {background-position:0% 50%;}
-}
-
-/* Title */
-.title{
-    text-align:center;
-    font-size:55px;
-    font-weight:800;
-    color:white;
-    margin-top:20px;
-    text-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
-
-.subtitle{
-    text-align:center;
-    color:white;
-    font-size:18px;
-    opacity:0.9;
-    margin-bottom:25px;
-}
-
-/* Envelope */
-.envelope{
-    width:320px;
-    height:220px;
-    margin:auto;
-    background: rgba(255,255,255,0.25);
-    backdrop-filter: blur(10px);
-    border-radius:25px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:90px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-    transition:0.3s;
-    animation: float 2s ease-in-out infinite;
-}
-
-.envelope:hover{
-    transform: scale(1.05);
-}
-
-@keyframes float{
-    0%{transform:translateY(0);}
-    50%{transform:translateY(-10px);}
-    100%{transform:translateY(0);}
-}
-
-/* Button */
-div.stButton > button{
-    width:100%;
-    padding:14px;
-    border-radius:15px;
-    border:none;
-    font-size:18px;
-    font-weight:bold;
-    background:white;
-    color:#7b2cbf;
-    transition:0.3s;
-}
-
-div.stButton > button:hover{
-    transform:scale(1.03);
-    background:#f3f3f3;
-}
-
-/* Letter */
-.letter{
-    max-width:720px;
-    margin:30px auto;
-    padding:40px;
-    background: rgba(255,255,255,0.9);
-    border-radius:25px;
-    box-shadow: 0 25px 60px rgba(0,0,0,0.25);
-    animation: openLetter 0.8s ease;
-    backdrop-filter: blur(10px);
-}
-
-@keyframes openLetter{
-    from{
-        opacity:0;
-        transform:translateY(40px) scale(0.9);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0) scale(1);
-    }
-}
-
-.nama{
-    text-align:center;
-    font-size:38px;
-    font-weight:800;
-    color:#7b2cbf;
-    margin-bottom:20px;
-}
-
-.isi{
-    font-size:18px;
-    line-height:2;
-    color:#333;
-}
-
-.penutup{
-    margin-top:30px;
-    text-align:right;
-    font-style:italic;
-    color:#7b2cbf;
-    font-weight:600;
-}
-
-/* typing effect */
-.typing {
-    overflow: hidden;
-    border-right: .15em solid #7b2cbf;
-    white-space: nowrap;
-    animation: typing 3s steps(40, end), blink .8s infinite;
-    width: 0;
-}
-
-@keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-}
-
-@keyframes blink {
-    50% { border-color: transparent }
-}
-
+.title{text-align:center;color:white;font-size:52px;font-weight:800;text-shadow:2px 2px 10px #a64d79;}
+.envelope{width:300px;height:200px;margin:auto;background:rgba(255,255,255,.25);backdrop-filter:blur(10px);
+border-radius:20px;display:flex;align-items:center;justify-content:center;flex-direction:column;font-size:80px;
+box-shadow:0 10px 30px rgba(0,0,0,.25);animation:f 2s infinite;}
+@keyframes f{50%{transform:translateY(-10px)}}
+div.stButton>button{width:100%;border-radius:15px;font-size:18px;background:white;color:#b03060;font-weight:bold}
+.letter{background:rgba(255,255,255,.95);padding:35px;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+.nama{text-align:center;font-size:34px;color:#b03060;font-weight:bold}
+.isi{font-size:19px;line-height:2;color:#333}
+.penutup{text-align:right;color:#b03060;font-style:italic;margin-top:25px}
 </style>
-""", unsafe_allow_html=True)
+""",unsafe_allow_html=True)
 
-# ================= HEADER =================
-st.markdown("<div class='title'>💌 Surat Untukmu 💌</div>", unsafe_allow_html=True)
-st.markdown("<div class='subtitle'>Ada sesuatu yang spesial untukmu...</div>", unsafe_allow_html=True)
+st.markdown("<div class='title'>🎂 Happy Birthday Mom 🎂</div>",unsafe_allow_html=True)
+st.markdown("<p style='text-align:center;color:white'>Untuk wanita terhebat dalam hidupku ❤️</p>",unsafe_allow_html=True)
 
-# ================= ENVELOPE =================
 if not st.session_state.open:
-    st.markdown("<div class='envelope'>💌</div>", unsafe_allow_html=True)
-
-    if st.button("Buka Surat ✨"):
-        st.session_state.open = True
+    st.markdown("<div class='envelope'>💌<div style='font-size:20px'>Untuk Ibu</div></div>",unsafe_allow_html=True)
+    if st.button("✨ Buka Surat"):
+        st.session_state.open=True
         st.balloons()
         st.rerun()
-
-# ================= LETTER =================
 else:
+    text="""Untuk Ibu tercinta,
 
-    # typing text effect sederhana
-    placeholder = st.empty()
+Selamat ulang tahun, Ibu. ❤️
 
-    text = """
-    Hai kamu,
+Hari ini adalah hari yang sangat istimewa.
 
-    Terima kasih sudah menjadi seseorang yang luar biasa.
-    Kamu mungkin tidak sadar, tapi keberadaanmu itu berarti banget.
+Terima kasih atas semua cinta, doa, perhatian, kesabaran, dan pengorbanan yang selalu Ibu berikan untukku.
 
-    Semoga semua yang kamu perjuangkan sekarang
-    pelan-pelan berubah jadi hal indah di masa depan.
+Maaf jika sampai hari ini aku masih sering membuat Ibu khawatir atau belum bisa membalas semua kebaikan Ibu.
 
-    Kalau kamu capek, istirahat dulu ya.
-    Kamu nggak harus selalu kuat setiap saat.
+Aku ingin Ibu tahu bahwa aku sangat bersyukur memiliki seorang ibu seperti Ibu.
 
-    Aku harap kamu selalu bahagia ✨
-    """
+Semoga Allah selalu memberikan Ibu kesehatan, kebahagiaan, umur yang penuh berkah, rezeki yang melimpah, dan hati yang selalu tenang.
 
-    displayed = ""
-    for char in text:
-        displayed += char
-        placeholder.markdown(f"""
-        <div class="letter">
-            <div class="nama">Untuk Kamu 🌷</div>
-            <div class="isi">{displayed.replace("\n","<br>")}</div>
-            <div class="penutup">Dengan penuh harapan ❤️</div>
-        </div>
-        """, unsafe_allow_html=True)
+Semoga semua doa Ibu dikabulkan, setiap langkah Ibu dipermudah, dan setiap harinya dipenuhi kebahagiaan.
+
+Aku akan terus berusaha menjadi anak yang bisa membuat Ibu bangga.
+
+Terima kasih telah menjadi rumah terbaik untukku.
+
+Aku sayang Ibu, lebih dari yang bisa diungkapkan dengan kata-kata.
+
+Selamat ulang tahun, Ibu. 🤍"""
+    ph=st.empty()
+    shown=""
+    for ch in text:
+        shown+=ch
+        ph.markdown(f"""
+<div class='letter'>
+<div class='nama'>🌸 Untuk Ibu Tercinta 🌸</div>
+<div class='isi'>{shown.replace(chr(10),'<br>')}</div>
+<div class='penutup'>Dengan cinta yang tak akan pernah habis ❤️<br>— Anakmu</div>
+</div>""",unsafe_allow_html=True)
         time.sleep(0.01)
